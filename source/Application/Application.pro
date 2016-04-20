@@ -15,14 +15,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     studentswindow.cpp \
-    addstudentwindow.cpp
+    addstudentwindow.cpp \
+    groupswindow.cpp
 
 HEADERS  += mainwindow.h \
     studentswindow.h \
-    addstudentwindow.h
+    addstudentwindow.h \
+    groupswindow.h
 
 FORMS    += mainwindow.ui \
     studentswindow.ui \
-    addstudentwindow.ui
+    addstudentwindow.ui \
+    groupswindow.ui
 
 DISTFILES +=
