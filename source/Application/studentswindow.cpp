@@ -30,10 +30,15 @@ void StudentsWindow::on_pushButton_clicked()
 void StudentsWindow::on_pushButton_3_clicked()
 {
     QModelIndexList indexList = ui->tableView->selectionModel()->selectedIndexes();
-    int row;
+    int row, id;
     foreach (QModelIndex index, indexList) {
         row = index.row();
         model->removeRow(row);
+        id = model->data(model->index(row, 0)).toInt();
+        QSqlQuery query;
+        query.prepare("DELETE FROM MEMBERS_OF_GROUPS WHERE STUDENT_ID=:id");
+        query.bindValue(":id", id);
+        query.exec();
     }
     model->select();
 }

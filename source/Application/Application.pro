@@ -16,16 +16,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     studentswindow.cpp \
     addstudentwindow.cpp \
-    groupswindow.cpp
+    groupswindow.cpp \
+    addgroupwindow.cpp
 
 HEADERS  += mainwindow.h \
     studentswindow.h \
     addstudentwindow.h \
-    groupswindow.h
+    groupswindow.h \
+    addgroupwindow.h
 
 FORMS    += mainwindow.ui \
     studentswindow.ui \
     addstudentwindow.ui \
-    groupswindow.ui
+    groupswindow.ui \
+    addgroupwindow.ui
 
 DISTFILES +=

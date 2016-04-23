@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
+    <width>388</width>
     <height>337</height>
    </rect>
   </property>
@@ -20,9 +20,16 @@
       <widget class="QComboBox" name="comboBox"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_addGroup">
        <property name="text">
-        <string>Show</string>
+        <string>Add group</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_removeGroup">
+       <property name="text">
+        <string>Remove group</string>
        </property>
       </widget>
      </item>
@@ -34,52 +41,46 @@
       <widget class="QTableView" name="tableView"/>
      </item>
      <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QLabel" name="label_id">
          <property name="text">
-          <string>Add student</string>
+          <string>ID:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QLabel" name="label_name">
          <property name="text">
-          <string>Remove student</string>
+          <string>Name:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="label_teacher">
          <property name="text">
           <string>Teacher: </string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="label_subject">
          <property name="text">
           <string>Subject:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="label_date">
          <property name="text">
           <string>Date of begin</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_editGroup">
+         <property name="text">
+          <string>Edit group</string>
          </property>
         </widget>
        </item>
@@ -90,16 +91,16 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_addStudent">
        <property name="text">
-        <string>Add group</string>
+        <string>Add student</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="pushButton_removeStudent">
        <property name="text">
-        <string>Edit group</string>
+        <string>Remove student</string>
        </property>
       </widget>
      </item>

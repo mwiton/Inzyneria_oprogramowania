@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("./database.db");
+    db.open();
 }
 
 MainWindow::~MainWindow()
@@ -34,5 +35,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-
+    GroupsWindow groupsWindow(db, this);
+    groupsWindow.setModal(true);
+    groupsWindow.exec();
 }

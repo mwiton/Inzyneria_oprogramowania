@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtSql>
 #include "studentswindow.h"
+#include "groupswindow.h"
 
 namespace Ui {
 class MainWindow;
