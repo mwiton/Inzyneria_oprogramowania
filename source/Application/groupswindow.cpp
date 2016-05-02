@@ -60,12 +60,51 @@ void GroupsWindow::on_pushButton_addGroup_clicked()
 
 void GroupsWindow::on_pushButton_removeGroup_clicked()
 {
-    QSqlQuery query, query1;
-    query.prepare("DELETE FROM GROUPS WHERE ID=:id");
-    query1.prepare("DELETE FROM MEMBERS_OF_GROUPS WHERE GROUP_ID=:id");
-    query.bindValue(":id", id);
-    query.exec();
-    query1.bindValue(":id", id);
-    query1.exec();
+    QMessageBox messageBox;
+    messageBox.setText("Do you want to remove this group?");
+    messageBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+    messageBox.setDefaultButton(QMessageBox::Yes);
+    int ret = messageBox.exec();
+    if(ret==QMessageBox::Yes){
+        QSqlQuery query, query1;
+        query.prepare("DELETE FROM GROUPS WHERE ID=:id");
+        query1.prepare("DELETE FROM MEMBERS_OF_GROUPS WHERE GROUP_ID=:id");
+        query.bindValue(":id", id);
+        query.exec();
+        query1.bindValue(":id", id);
+        query1.exec();
+        refreshGroupList();
+    }
+}
+
+void GroupsWindow::on_pushButton_editGroup_clicked()
+{
+    EditGroupWindow window(id, this);
+    window.setModal(true);
+    window.exec();
     refreshGroupList();
+}
+
+void GroupsWindow::on_pushButton_addStudent_clicked()
+{
+    AddStudentToGroup window(id, this);
+    window.setModal(true);
+    window.exec();
+    refreshWindow();
+}
+
+void GroupsWindow::on_pushButton_removeStudent_clicked()
+{
+    QModelIndexList indexList = ui->tableView->selectionModel()->selectedIndexes();
+    int row, idS;
+    foreach (QModelIndex index, indexList) {
+        row = index.row();
+        idS = studentsModel->data(studentsModel->index(row, 0)).toInt();
+        QSqlQuery query;
+        query.prepare("DELETE FROM MEMBERS_OF_GROUPS WHERE STUDENT_ID=:idS AND GROUP_ID=:idG");
+        query.bindValue(":idS", idS);
+        query.bindValue(":idG", id);
+        query.exec();
+    }
+    refreshWindow();
 }

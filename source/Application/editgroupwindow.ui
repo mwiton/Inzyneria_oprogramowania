@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddGroupWindow</class>
- <widget class="QDialog" name="AddGroupWindow">
+ <class>EditGroupWindow</class>
+ <widget class="QDialog" name="EditGroupWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>322</width>
+    <width>400</width>
     <height>210</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
@@ -36,7 +36,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
@@ -50,11 +50,11 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Teacher</string>
+        <string>Teacher:</string>
        </property>
       </widget>
      </item>
@@ -64,7 +64,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="label_5">
        <property name="text">
@@ -82,7 +82,7 @@
      <item>
       <widget class="QPushButton" name="pushButton">
        <property name="text">
-        <string>Add</string>
+        <string>Edit</string>
        </property>
       </widget>
      </item>
@@ -93,8 +93,8 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>128</width>
+         <height>24</height>
         </size>
        </property>
       </spacer>

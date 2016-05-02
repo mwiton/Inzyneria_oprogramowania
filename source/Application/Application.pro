@@ -17,18 +17,27 @@ SOURCES += main.cpp\
     studentswindow.cpp \
     addstudentwindow.cpp \
     groupswindow.cpp \
-    addgroupwindow.cpp
+    addgroupwindow.cpp \
+    editgroupwindow.cpp \
+    addstudenttogroup.cpp \
+    markswindow.cpp
 
 HEADERS  += mainwindow.h \
     studentswindow.h \
     addstudentwindow.h \
     groupswindow.h \
-    addgroupwindow.h
+    addgroupwindow.h \
+    editgroupwindow.h \
+    addstudenttogroup.h \
+    markswindow.h
 
 FORMS    += mainwindow.ui \
     studentswindow.ui \
     addstudentwindow.ui \
     groupswindow.ui \
-    addgroupwindow.ui
+    addgroupwindow.ui \
+    editgroupwindow.ui \
+    addstudenttogroup.ui \
+    markswindow.ui
 
 DISTFILES +=

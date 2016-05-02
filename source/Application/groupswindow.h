@@ -3,7 +3,10 @@
 
 #include <QDialog>
 #include <QtSql>
+#include <QMessageBox>
 #include "addgroupwindow.h"
+#include "editgroupwindow.h"
+#include "addstudenttogroup.h"
 
 namespace Ui {
 class GroupsWindow;
@@ -23,6 +26,12 @@ private slots:
     void on_pushButton_addGroup_clicked();
 
     void on_pushButton_removeGroup_clicked();
+
+    void on_pushButton_editGroup_clicked();
+
+    void on_pushButton_addStudent_clicked();
+
+    void on_pushButton_removeStudent_clicked();
 
 private:
     Ui::GroupsWindow *ui;

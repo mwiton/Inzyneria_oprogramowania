@@ -39,3 +39,10 @@ void MainWindow::on_pushButton_2_clicked()
     groupsWindow.setModal(true);
     groupsWindow.exec();
 }
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    MarksWindow window(db, this);
+    window.setModal(true);
+    window.exec();
+}

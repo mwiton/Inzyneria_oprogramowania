@@ -10,7 +10,7 @@ AddGroupWindow::AddGroupWindow(QWidget *parent) :
     query.exec("SELECT MAX(ID) FROM GROUPS");
     query.next();
     id = query.value(0).toInt()+1;
-    ui->label_ID->setText(QString::number(id));
+    ui->label_ID->setText("ID: " + QString::number(id));
 }
 
 AddGroupWindow::~AddGroupWindow()
