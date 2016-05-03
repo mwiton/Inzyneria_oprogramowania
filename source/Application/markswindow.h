@@ -19,13 +19,19 @@ public:
     explicit MarksWindow(QSqlDatabase &d, QWidget *parent = 0);
     ~MarksWindow();
 
+private slots:
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MarksWindow *ui;
     QSqlDatabase db;
     QStandardItemModel *model=NULL;
     QString idGroup;
     QList<QPair<int, QString> > events; //Pair: id and name
+    QList<QPair<int, QString> > students; //Pair: id and name
+    void getGroupId();
     void createGroupList();
+    void createStudentsList();
     void refreshModel();
     void createListOfEvents();
     void setHeadersName();

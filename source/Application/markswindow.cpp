@@ -9,8 +9,7 @@ MarksWindow::MarksWindow(QSqlDatabase &d, QWidget *parent) :
 {
     ui->setupUi(this);
     createGroupList();
-    refreshModel();
-    ui->tableView->setModel(model);
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 MarksWindow::~MarksWindow()
@@ -29,29 +28,25 @@ void MarksWindow::createGroupList(){
 }
 
 void MarksWindow::refreshModel(){
+    getGroupId();
+    createListOfEvents();
+    createStudentsList();
+    if(model) delete model;
+    model = new QStandardItemModel(students.size(), events.size() + 2, this);
+    ui->tableView->setModel(model);
+    setHeadersName();
+    fillMarks();  
+}
+
+void MarksWindow::getGroupId(){
     QSqlQuery query;
-    int numOfEvents, numOfStudents;
     query.prepare("SELECT ID FROM GROUPS WHERE NAME=:name");
     query.bindValue(":name", ui->comboBox->currentText());
     query.exec();
-    query.next();
+    query.first();
     idGroup = query.value(0).toString();
-    query.prepare("SELECT COUNT(ID) FROM EVENTS WHERE ID_GROUP = :id");
-    query.bindValue(":id", idGroup);
-    query.exec();
-    query.next();
-    numOfEvents = query.value(0).toInt();
-    query.prepare("SELECT COUNT(ID) FROM MEMBERS_OF_GROUPS WHERE GROUP_ID = :id");
-    query.bindValue(":id", idGroup);
-    query.exec();
-    query.next();
-    numOfStudents = query.value(0).toInt();
-    createListOfEvents();
-    if(model) delete model;
-    model = new QStandardItemModel(numOfStudents, numOfEvents + 2, this);
-    setHeadersName();
-    fillMarks();
 }
+
 
 void MarksWindow::createListOfEvents(){
     QSqlQuery query;
@@ -61,6 +56,17 @@ void MarksWindow::createListOfEvents(){
     events.clear();
     while(query.next()){
         events.append(qMakePair(query.value(0).toInt(), query.value(1).toString()));
+    }
+}
+
+void MarksWindow::createStudentsList(){
+    QSqlQuery query;
+    query.prepare("SELECT STUDENTS.ID, STUDENTS.NAME FROM MEMBERS_OF_GROUPS INNER JOIN STUDENTS ON STUDENTS.ID = MEMBERS_OF_GROUPS.STUDENT_ID WHERE MEMBERS_OF_GROUPS.GROUP_ID = :id");
+    query.bindValue(":id", idGroup);
+    query.exec();
+    students.clear();
+    while(query.next()){
+        students.append(qMakePair(query.value(0).toInt(), query.value(1).toString()));
     }
 }
 
@@ -75,27 +81,25 @@ void MarksWindow::setHeadersName(){
 }
 
 void MarksWindow::fillMarks(){
-    QSqlQuery studentsQuery, eventsQuery;
-    int record=0;
+    QSqlQuery marksQuery;
     QModelIndex index;
-    studentsQuery.prepare("SELECT STUDENTS.ID, STUDENTS.NAME FROM MEMBERS_OF_GROUPS INNER JOIN STUDENTS ON STUDENTS.ID = MEMBERS_OF_GROUPS.STUDENT_ID WHERE MEMBERS_OF_GROUPS.GROUP_ID = :id");
-    studentsQuery.bindValue(":id", idGroup);
-    studentsQuery.exec();
-    while(studentsQuery.next()){
+    for(int record=0; record<students.size(); ++record){
         index = model->index(record, 0);
-        model->setData(index, studentsQuery.value(1).toString());
+        model->setData(index, students[record].second);
         for(int i=0; i<events.size(); ++i){
-            eventsQuery.prepare("SELECT VALUE FROM MARKS WHERE ID_EVENT= :idEvent AND ID_STUDENT= :idStudent");
-            eventsQuery.bindValue(":idEvent", events[i].first);
-            eventsQuery.bindValue(":idStudent", studentsQuery.value(0).toString());
-            eventsQuery.exec();
-            if(eventsQuery.first()){
+            marksQuery.prepare("SELECT VALUE FROM MARKS WHERE ID_EVENT= :idEvent AND ID_STUDENT= :idStudent");
+            marksQuery.bindValue(":idEvent", events[i].first);
+            marksQuery.bindValue(":idStudent", students[record].first);
+            marksQuery.exec();
+            if(marksQuery.first()){
                 index = model->index(record, i+1);
-                model->setData(index, eventsQuery.value(0).toFloat());
+                model->setData(index, marksQuery.value(0).toFloat());
             }
-            eventsQuery.first();
-
         }
-        ++record;
     }
+}
+
+void MarksWindow::on_comboBox_currentIndexChanged(const QString &arg1)
+{
+    refreshModel();
 }
