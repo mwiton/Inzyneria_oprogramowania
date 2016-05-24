@@ -6,6 +6,8 @@
 #include <QStandardItemModel>
 #include <QPair>
 #include <QList>
+#include "addmarkwindow.h"
+#include "addevent.h"
 
 namespace Ui {
 class MarksWindow;
@@ -22,6 +24,14 @@ public:
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
+    void on_tableView_clicked(const QModelIndex &index);
+
+    void on_pushButton_clicked();
+
+    void on_addEventButton_clicked();
+
+    void on_deleteEventButton_clicked();
+
 private:
     Ui::MarksWindow *ui;
     QSqlDatabase db;
@@ -36,6 +46,7 @@ private:
     void createListOfEvents();
     void setHeadersName();
     void fillMarks();
+    void calculateAverage();
 };
 
 #endif // MARKSWINDOW_H

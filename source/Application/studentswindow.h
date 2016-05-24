@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtSql>
+#include <QMessageBox>
 #include "addstudentwindow.h"
 
 namespace Ui {

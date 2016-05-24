@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>300</height>
+    <width>655</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,27 +36,73 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="addEventButton">
+        <widget class="QLabel" name="name_label">
          <property name="text">
-          <string>Add event</string>
+          <string>Name :</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="addMarkButton">
+        <widget class="QLabel" name="description_label">
          <property name="text">
-          <string>Add mark</string>
+          <string>Description:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QLabel" name="date_event_label">
          <property name="text">
-          <string>Change mark</string>
+          <string>Date of event:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="weight_label">
+         <property name="text">
+          <string>Weight:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="date_mark_label">
+         <property name="text">
+          <string>Date of mark:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="info_label">
+         <property name="text">
+          <string>Other info:</string>
          </property>
         </widget>
        </item>
       </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Add / Change mark</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addEventButton">
+       <property name="text">
+        <string>Add event</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="deleteEventButton">
+       <property name="text">
+        <string>Delete event</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

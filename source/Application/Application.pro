@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     addgroupwindow.cpp \
     editgroupwindow.cpp \
     addstudenttogroup.cpp \
-    markswindow.cpp
+    markswindow.cpp \
+    addmarkwindow.cpp \
+    addevent.cpp
 
 HEADERS  += mainwindow.h \
     studentswindow.h \
@@ -29,7 +31,9 @@ HEADERS  += mainwindow.h \
     addgroupwindow.h \
     editgroupwindow.h \
     addstudenttogroup.h \
-    markswindow.h
+    markswindow.h \
+    addmarkwindow.h \
+    addevent.h
 
 FORMS    += mainwindow.ui \
     studentswindow.ui \
@@ -38,6 +42,8 @@ FORMS    += mainwindow.ui \
     addgroupwindow.ui \
     editgroupwindow.ui \
     addstudenttogroup.ui \
-    markswindow.ui
+    markswindow.ui \
+    addmarkwindow.ui \
+    addevent.ui
 
 DISTFILES +=
