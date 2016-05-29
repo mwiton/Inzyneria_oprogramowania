@@ -6,6 +6,7 @@
 #include <QStandardItemModel>
 #include <QPair>
 #include <QList>
+#include <QMessageBox>
 #include "addmarkwindow.h"
 #include "addevent.h"
 

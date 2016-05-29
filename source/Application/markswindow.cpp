@@ -175,6 +175,12 @@ void MarksWindow::on_addEventButton_clicked()
 void MarksWindow::on_deleteEventButton_clicked()
 {
     QModelIndexList indexList = ui->tableView->selectionModel()->selectedIndexes();
+    if(indexList.size()==0){
+        QMessageBox msg;
+        msg.setText("Choose event");
+        msg.exec();
+        return;
+    }
     QModelIndex index = indexList.first();
     if (index.column() != 0 && index.column() != events.size()+1){
         int id;
@@ -188,5 +194,9 @@ void MarksWindow::on_deleteEventButton_clicked()
         query.exec();
         refreshModel();
     }
-
+    else{
+        QMessageBox msg;
+        msg.setText("Choose event");
+        msg.exec();
+    }
 }
